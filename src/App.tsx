@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./containers/Login";
-import TopNavigation from "./components/Header/TopNavigation";
+import TopNavigation from "./components/SidePanel/TopNavigation";
 import { AuthProvider } from "./useContext/authProvider";
+import "./App.scss";
+import SidePanel from "./components/SidePanel/SidePanel";
 
 function App() {
   return (
     <AuthProvider>
       <div className="App">
-        <TopNavigation />
+        {/* <TopNavigation /> */}
         <main role="main" className="container">
           <Routes>
             <Route index path="/" Component={Home} />

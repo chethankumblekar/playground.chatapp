@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../useContext/authProvider";
+import React from "react";
+import SidePanel from "../SidePanel/SidePanel";
+import Header from "../Header/Header";
+import "./Home.scss";
+import ChatsHomePage from "../pages/Chats/ChatsHomePage";
 
 const Home: React.FC = () => {
-  const userContext = useContext(AuthContext);
   return (
-    <div>
-      Hello,{" "}
-      {userContext.user.name !== "" ? userContext.user.name : "please login"}
+    <div className="home-container">
+      <SidePanel />
+      <Header />
+      <ChatsHomePage />
     </div>
   );
 };

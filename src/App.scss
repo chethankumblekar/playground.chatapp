@@ -1,0 +1,12 @@
+@import "./common/colors.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $primary-color;
+  font-family: "Noto Sans", cursive;
+  color: $font-primary;
+}
