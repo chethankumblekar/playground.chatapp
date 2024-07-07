@@ -4,7 +4,6 @@ import Login from "./containers/Login";
 import TopNavigation from "./components/SidePanel/TopNavigation";
 import { AuthProvider } from "./useContext/authProvider";
 import "./App.scss";
-import SidePanel from "./components/SidePanel/SidePanel";
 
 function App() {
   return (

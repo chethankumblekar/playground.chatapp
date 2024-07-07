@@ -8,8 +8,10 @@ const Home: React.FC = () => {
   return (
     <div className="home-container">
       <SidePanel />
-      <Header />
-      <ChatsHomePage />
+      <div className="center">
+        <Header />
+        <ChatsHomePage />
+      </div>
     </div>
   );
 };

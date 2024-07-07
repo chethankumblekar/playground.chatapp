@@ -1,0 +1,31 @@
+@import "../../common/colors.scss";
+
+.chat-header {
+  height: 20vh;
+  padding: 20px;
+}
+
+.recipient-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50px;
+}
+
+.recipient-info {
+  color: $font-secondary;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+  align-content: center;
+}
+
+.recipient-name {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.recipient-status {
+  color: green;
+  font-size: 8px;
+  margin-left: 10px;
+}

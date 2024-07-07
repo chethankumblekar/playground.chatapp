@@ -1,0 +1,47 @@
+@import "../../common/colors.scss";
+
+.live-chat-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: $white-background;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+// .chat-header {
+//   height: 20vh;
+//   padding: 10px;
+// }
+
+// .recipient-avatar {
+//   width: 42px;
+//   height: 42px;
+//   border-radius: 20px;
+// }
+
+// .recipient-info {
+//   color: $font-secondary;
+//   display: flex;
+//   padding-left: 10px;
+//   align-items: center;
+//   align-content: center;
+// }
+
+// .recipient-name {
+//   font-size: 16px;
+//   font-weight: 800;
+// }
+
+// .recipient-status {
+//   color: green;
+//   font-size: 8px;
+//   margin-left: 10px;
+// }
+
+// .chat-messages-container {
+//   display: flex;
+//   width: 100%;
+//   height: 450px;
+// }

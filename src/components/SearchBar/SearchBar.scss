@@ -1,0 +1,22 @@
+@import "../../common/colors.scss";
+
+.search-bar {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  background: $search-background;
+  .search-icon {
+    color: $font-secondary;
+  }
+  input {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    background: $search-background;
+  }
+}
