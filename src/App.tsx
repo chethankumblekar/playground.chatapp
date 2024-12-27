@@ -9,7 +9,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="App">
-        {/* <TopNavigation /> */}
+        <TopNavigation />
         <main role="main" className="container">
           <Routes>
             <Route index path="/" Component={Home} />

@@ -1,14 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
+import Cookies from "js-cookie";
 import { User } from "../models/Auth";
 
 type AuthContextType = {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
+  logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType>(undefined as any);
 
-export const AuthProvider = (props: any) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User>({
     name: "",
     email: "",
@@ -16,9 +20,28 @@ export const AuthProvider = (props: any) => {
     picture: "",
   });
 
+  // Define the logout function
+  const logout = () => {
+    Cookies.remove("access_token");
+    localStorage.removeItem("access_token");
+    setUser({
+      name: "",
+      email: "",
+      isAuthenticated: false,
+      picture: "",
+    });
+  };
+
+  const contextValue = useMemo(
+    () => ({
+      user,
+      setUser,
+      logout,
+    }),
+    [user]
+  );
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {props.children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };

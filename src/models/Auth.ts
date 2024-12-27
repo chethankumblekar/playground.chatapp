@@ -13,6 +13,6 @@ export interface Action {
 export interface User {
   name: string;
   email: string;
-  picture: string;
+  picture: string | undefined;
   isAuthenticated: boolean;
 }
