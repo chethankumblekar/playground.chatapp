@@ -14,8 +14,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User>({
-    name: "",
-    email: "",
+    given_name: "",
+    family_name: "",
+    sub: "",
     isAuthenticated: false,
     picture: "",
   });
@@ -25,8 +26,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     Cookies.remove("access_token");
     localStorage.removeItem("access_token");
     setUser({
-      name: "",
-      email: "",
+      given_name: "",
+      family_name: "",
+      sub: "",
       isAuthenticated: false,
       picture: "",
     });

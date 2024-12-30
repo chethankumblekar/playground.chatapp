@@ -11,8 +11,9 @@ export interface Action {
 }
 
 export interface User {
-  name: string;
-  email: string;
+  given_name: string;
+  family_name: string;
+  sub: string;
   picture: string | undefined;
   isAuthenticated: boolean;
 }

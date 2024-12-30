@@ -11,6 +11,7 @@ const GoogleAuthButton = (props: GoogleAuthProps) => {
       onSuccess={props.onSuccess}
       onError={props.onFailure}
       auto_select
+      useOneTap={true}
     />
   );
 };

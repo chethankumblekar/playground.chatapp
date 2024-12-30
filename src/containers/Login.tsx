@@ -22,8 +22,6 @@ const Login: React.FC = () => {
 
   const handleSuccess = async (response: CredentialResponse) => {
     const token = response.credential;
-    console.log(token);
-
     if (token) {
       try {
         const res = await fetch(config.GOOGLE_AUTH_CALLBACK_URL, {
@@ -41,7 +39,6 @@ const Login: React.FC = () => {
         });
 
         const decodedUser = jwtDecode<User>(data.token);
-        console.log(decodedUser);
         setUser({ ...decodedUser, isAuthenticated: true });
         navigate("/");
       } catch (error) {

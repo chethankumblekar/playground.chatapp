@@ -2,7 +2,7 @@
 
 .live-chat-container {
   width: 100%;
-  height: 100%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   background: $white-background;
@@ -10,38 +10,8 @@
   border-bottom-right-radius: 20px;
 }
 
-// .chat-header {
-//   height: 20vh;
-//   padding: 10px;
-// }
-
-// .recipient-avatar {
-//   width: 42px;
-//   height: 42px;
-//   border-radius: 20px;
-// }
-
-// .recipient-info {
-//   color: $font-secondary;
-//   display: flex;
-//   padding-left: 10px;
-//   align-items: center;
-//   align-content: center;
-// }
-
-// .recipient-name {
-//   font-size: 16px;
-//   font-weight: 800;
-// }
-
-// .recipient-status {
-//   color: green;
-//   font-size: 8px;
-//   margin-left: 10px;
-// }
-
-// .chat-messages-container {
-//   display: flex;
-//   width: 100%;
-//   height: 450px;
-// }
+.input-prompt-container {
+  flex-shrink: 0;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}

@@ -9,9 +9,11 @@ const Header = () => {
     <div className="home-header">
       <h4>
         Hi,{" "}
-        {userContext.user.name !== "" ? userContext.user.name : "please login"}
+        {userContext.user.given_name !== ""
+          ? userContext.user.given_name
+          : "please login"}
       </h4>
-      <h4>{getDate()}</h4>
+      {/* <h4>{getDate()}</h4> */}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 @import "../../common/colors.scss";
 
 .chat-header {
-  height: 20vh;
-  padding: 20px;
+  height: 10vh;
+  padding: 10px;
 }
 
 .recipient-avatar {
@@ -24,8 +24,14 @@
   font-weight: 800;
 }
 
-.recipient-status {
+.recipient-status-online {
   color: green;
+  font-size: 8px;
+  margin-left: 10px;
+}
+
+.recipient-status-offline {
+  color: red;
   font-size: 8px;
   margin-left: 10px;
 }

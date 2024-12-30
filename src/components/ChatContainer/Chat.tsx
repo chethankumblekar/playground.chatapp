@@ -50,7 +50,7 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ color: "black" }}>
       <h1>Chat</h1>
       <p>Connection Status: {connectionState}</p>
 

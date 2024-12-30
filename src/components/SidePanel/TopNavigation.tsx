@@ -93,7 +93,7 @@ export default function TopNavigation() {
                 src={
                   user.isAuthenticated && user.picture
                     ? user.picture
-                    : user.name
+                    : user.given_name
                 }
               />
             </IconButton>
