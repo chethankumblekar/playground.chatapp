@@ -39,8 +39,10 @@ const Login: React.FC = () => {
         });
 
         const decodedUser = jwtDecode<User>(data.token);
-        setUser({ ...decodedUser, isAuthenticated: true });
-        navigate("/");
+        setTimeout(() => {
+          setUser({ ...decodedUser, isAuthenticated: true });
+          navigate("/");
+        }, 5000);
       } catch (error) {
         console.error("Error verifying token:", error);
       }

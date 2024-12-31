@@ -1,15 +1,33 @@
 import React from "react";
 import "./SearchBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = () => {
+interface searchBarProps {
+  searchTerm: string;
+  handleSearchChange: (email: string) => void;
+}
+
+const SearchBar = (props: searchBarProps) => {
   return (
     <div className="search-bar">
-      <span>
-        <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
-      </span>
-      <input type="text" placeholder="Search..." />
+      <input
+        type="text"
+        placeholder="Search..."
+        value={props.searchTerm}
+        onChange={(e) => props.handleSearchChange(e.target.value)}
+        autoComplete="off"
+        spellCheck="false"
+        autoFocus
+      />
+      <button type="button">
+        <span>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </span>
+      </button>
     </div>
   );
 };

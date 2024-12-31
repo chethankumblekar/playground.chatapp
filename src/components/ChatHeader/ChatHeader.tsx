@@ -5,7 +5,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import "./ChatHeader.scss";
 
 interface ChatHeaderPorps {
-  connectionState: string;
+  isOnline: boolean;
   username: string;
   avatarUrl: string;
 }
@@ -17,7 +17,7 @@ const ChatHeader = (props: ChatHeaderPorps) => {
         <img src={sample} alt="sample" className="recipient-avatar" />
         <div className="recipient-info">
           <span className="recipient-name">{props.username}</span>
-          {props.connectionState === "Connected" ? (
+          {props.isOnline ? (
             <FontAwesomeIcon
               icon={faCircle}
               className="recipient-status-online"

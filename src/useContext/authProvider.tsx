@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo, useContext } from "react";
 import Cookies from "js-cookie";
 import { User } from "../models/Auth";
 
@@ -47,3 +47,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
+
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export default useAuth;

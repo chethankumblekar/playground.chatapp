@@ -16,6 +16,7 @@ interface ChatContainerProps {
 const ChatContainer = (props: ChatContainerProps) => {
   const { hubConnection, connectionState } = useSignalR();
   const [userMessages, setUserMessages] = useState<UserMessage[]>([]);
+  const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
   const [message, setMessage] = useState<string>("");
   const recipientEmail = props.recipient;
   const userContext = useContext(AuthContext);
@@ -31,13 +32,20 @@ const ChatContainer = (props: ChatContainerProps) => {
               content: message,
               id: "",
               recipientId: userContext.user.sub,
-              senderId: recipientEmail,
+              senderId: senderEmail,
               groupId: undefined,
               sentAt: new Date().toISOString(),
             },
           ]);
         }
       );
+      hubConnection.on("UserConnected", (userId) => {
+        setOnlineUsers((prev) => [...prev, userId]);
+      });
+
+      hubConnection.on("UserDisconnected", (userId) => {
+        setOnlineUsers((prev) => prev.filter((id) => id !== userId));
+      });
     }
 
     return () => {
@@ -64,8 +72,8 @@ const ChatContainer = (props: ChatContainerProps) => {
   };
 
   const sendMessage = async () => {
-    if (!recipientEmail || !message) {
-      alert("Recipient email and message are required.");
+    if (!message) {
+      alert("empty messages can't be sent, type something...");
       return;
     }
 
@@ -92,7 +100,7 @@ const ChatContainer = (props: ChatContainerProps) => {
     <div className="live-chat-container">
       <ChatHeader
         avatarUrl=""
-        connectionState={connectionState}
+        isOnline={onlineUsers.includes(recipientEmail)}
         username={recipientEmail}
       />
       <MessagesContainer messages={userMessages} />

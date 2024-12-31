@@ -11,13 +11,12 @@ import { AuthContext } from "../../../useContext/authProvider";
 const ChatsHomePage = () => {
   const [recipient, setRecipient] = useState("");
   const [userMessages, setUserMessages] = useState<UserMessage[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const userContext = useContext(AuthContext);
 
   useEffect(() => {
-    if (userContext.user) {
-      loadRecipients();
-    }
-  }, [userContext.user]);
+    loadRecipients();
+  }, []);
 
   const loadRecipients = async () => {
     try {
@@ -34,10 +33,17 @@ const ChatsHomePage = () => {
     setRecipient(email);
   };
 
+  const handleSearchChange = (email: string) => {
+    setSearchTerm(email);
+  };
+
   return (
     <div className="chats-page">
       <div className="chat-list">
-        <SearchBar />
+        <SearchBar
+          searchTerm={searchTerm}
+          handleSearchChange={handleSearchChange}
+        />
         <div className="list-items">
           {userMessages.map((item) => (
             <ChatItem
