@@ -75,7 +75,6 @@ async function checkStatus(response: Response): Promise<Response> {
     //     return response.statusText;
     //   })
     // );
-    console.log(response);
 
     return response.json().then((errMsg: object) => {
       throw {

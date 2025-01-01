@@ -12,10 +12,6 @@ const hubConnection = new signalR.HubConnectionBuilder()
   .configureLogging(signalR.LogLevel.Information)
   .build();
 
-hubConnection.on("ReceiveMessage", (recipientId, message) => {
-  console.log(`Message from ${recipientId}: ${message}`);
-});
-
 hubConnection
   .start()
   .then(() => console.log("SignalR connected"))

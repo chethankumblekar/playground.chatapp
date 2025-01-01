@@ -64,7 +64,6 @@ const ChatContainer = (props: ChatContainerProps) => {
         `messages/${props.recipient}`,
         RequestType.GET
       );
-      console.log(response);
       setUserMessages(response);
     } catch (error) {
       console.error("Failed to load messages", error);

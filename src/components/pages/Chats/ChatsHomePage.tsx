@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./ChatsHomePage.scss";
 import ChatItem from "../../ChatItem/ChatItem";
 import ChatContainer from "../../ChatContainer/ChatContainer";
@@ -21,7 +21,6 @@ const ChatsHomePage = () => {
   const loadRecipients = async () => {
     try {
       const response = await callService("user", "messages", RequestType.GET);
-      console.log(response);
       setUserMessages(response);
     } catch (error) {
       console.error("Failed to load messages", error);
@@ -29,7 +28,6 @@ const ChatsHomePage = () => {
   };
 
   const handleSetRecipient = (email: string) => {
-    console.log("Setting recipient:", email);
     setRecipient(email);
   };
 

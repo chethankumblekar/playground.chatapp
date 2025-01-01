@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import "./MessagesContainer.scss";
 import Message from "../Message/Message";
 import { UserMessage } from "../pages/Chats/model";
@@ -10,6 +10,18 @@ interface MessageContainerProps {
 
 const MessagesContainer = (props: MessageContainerProps) => {
   const userContext = useContext(AuthContext);
+
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [props.messages]);
 
   return (
     <div className="messages-container">
@@ -23,6 +35,7 @@ const MessagesContainer = (props: MessageContainerProps) => {
           <Message content={message.content} time={message.sentAt} />
         </div>
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
 };
