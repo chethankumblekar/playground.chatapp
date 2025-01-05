@@ -81,7 +81,6 @@ async function checkStatus(response: Response): Promise<Response> {
     //     return response.statusText;
     //   })
     // );
-    console.log(response);
 
     return response.json().then((errMsg: object) => {
       const err: CustomError = new Error(response.statusText);

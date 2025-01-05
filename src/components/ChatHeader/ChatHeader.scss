@@ -1,8 +1,10 @@
 @import "../../common/colors.scss";
 
 .chat-header {
-  height: 10vh;
+  height: 5vh;
   padding: 10px;
+  background-color: $background-color;
+  border-radius: 10px;
 }
 
 .recipient-avatar {
