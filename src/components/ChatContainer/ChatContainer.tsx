@@ -14,7 +14,7 @@ interface ChatContainerProps {
 }
 
 const ChatContainer = (props: ChatContainerProps) => {
-  const { hubConnection, connectionState } = useSignalR();
+  const { hubConnection } = useSignalR();
   const [userMessages, setUserMessages] = useState<UserMessage[]>([]);
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
   const [message, setMessage] = useState<string>("");
