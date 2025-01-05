@@ -1,6 +1,12 @@
 import { RequestType } from "./requestType";
 import GetWebApiToken from "../auth/tokenProvider";
 
+interface CustomError extends Error {
+  errorMessage?: object;
+  status?: number;
+  url?: string;
+}
+
 export function callService(
   serviceName: string,
   methodName: string,
@@ -78,12 +84,11 @@ async function checkStatus(response: Response): Promise<Response> {
     console.log(response);
 
     return response.json().then((errMsg: object) => {
-      throw {
-        errorMessage: errMsg,
-        status: response.status,
-        statusText: response.statusText,
-        url: response.url,
-      };
+      const err: CustomError = new Error(response.statusText);
+      err.errorMessage = errMsg;
+      err.status = response.status;
+      err.url = response.url;
+      throw err;
     });
   }
 }

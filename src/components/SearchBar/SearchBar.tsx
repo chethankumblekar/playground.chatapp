@@ -1,10 +1,7 @@
 import React from "react";
 import "./SearchBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface searchBarProps {
   searchTerm: string;

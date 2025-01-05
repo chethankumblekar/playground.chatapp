@@ -18,7 +18,6 @@ const ChatContainer = (props: ChatContainerProps) => {
   const [userMessages, setUserMessages] = useState<UserMessage[]>([]);
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
   const [message, setMessage] = useState<string>("");
-  const recipientEmail = props.recipient;
   const userContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -51,25 +50,23 @@ const ChatContainer = (props: ChatContainerProps) => {
     return () => {
       hubConnection.off("ReceiveMessage");
     };
-  }, [hubConnection]);
+  }, [hubConnection, userContext.user.sub]);
 
   useEffect(() => {
+    const loadOneOnOneMessages = async () => {
+      try {
+        const response = await callService(
+          "user",
+          `messages/${props.recipient}`,
+          RequestType.GET
+        );
+        setUserMessages(response);
+      } catch (error) {
+        console.error("Failed to load messages", error);
+      }
+    };
     loadOneOnOneMessages();
-  }, [recipientEmail]);
-
-  const loadOneOnOneMessages = async () => {
-    try {
-      const response = await callService(
-        "user",
-        `messages/${props.recipient}`,
-        RequestType.GET
-      );
-      console.log(response);
-      setUserMessages(response);
-    } catch (error) {
-      console.error("Failed to load messages", error);
-    }
-  };
+  }, [props.recipient]);
 
   const sendMessage = async () => {
     if (!message) {
@@ -78,14 +75,14 @@ const ChatContainer = (props: ChatContainerProps) => {
     }
 
     try {
-      await hubConnection.invoke("SendMessageToUser", recipientEmail, message);
+      await hubConnection.invoke("SendMessageToUser", props.recipient, message);
       setMessage("");
       setUserMessages((prevMessages) => [
         ...prevMessages,
         {
           content: message,
           id: "",
-          recipientId: recipientEmail,
+          recipientId: props.recipient,
           senderId: userContext.user.sub,
           groupId: undefined,
           sentAt: new Date().toISOString(),
@@ -100,8 +97,8 @@ const ChatContainer = (props: ChatContainerProps) => {
     <div className="live-chat-container">
       <ChatHeader
         avatarUrl=""
-        isOnline={onlineUsers.includes(recipientEmail)}
-        username={recipientEmail}
+        isOnline={onlineUsers.includes(props.recipient)}
+        username={props.recipient}
       />
       <MessagesContainer messages={userMessages} />
       <div className="input-prompt-container">
