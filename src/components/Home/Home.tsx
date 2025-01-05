@@ -4,12 +4,10 @@ import Header from "../Header/Header";
 import "./Home.scss";
 import ChatsHomePage from "../pages/Chats/ChatsHomePage";
 import useAuth from "../../useContext/authProvider";
-import Login from "../../containers/Login";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Home: React.FC = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
   return (
     <div>
       {user.sub ? (

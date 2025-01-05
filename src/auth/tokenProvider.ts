@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 
 export default function GetWebApiToken() {
   //   const navigate = useNavigate();
